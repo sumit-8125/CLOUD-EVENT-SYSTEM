@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Event Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>
+            <i class="fa-solid fa-cloud"></i>
+            Event Driven Data Processing Dashboard
+        </h1>
+
+        <p>
+            AWS | Lambda | DynamoDB | API Gateway | EC2
+        </p>
+
+    </header>
+
+    <section class="top-cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-users"></i>
+
+            <h2 id="totalRecords">0</h2>
+
+            <span>Total Employees</span>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h2 id="lastUpdated">--</h2>
+
+            <span>Last Updated</span>
+
+        </div>
+
+        <div class="card">
+
+            <button id="refreshBtn">
+                <i class="fa-solid fa-rotate"></i>
+                Refresh Data
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="table-section">
+
+        <div class="table-header">
+
+            <h2>Processed Employee Data</h2>
+
+        </div>
+
+        <div id="loader" class="loader">
+
+            <div class="spinner"></div>
+
+            <p>Loading latest records...</p>
+
+        </div>
+
+        <table id="employeeTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Department</th>
+
+                    <th>Salary</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tableBody">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <footer>
+
+        <p>
+
+            Cloud Assignment • Event Driven Architecture • AWS
+
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
