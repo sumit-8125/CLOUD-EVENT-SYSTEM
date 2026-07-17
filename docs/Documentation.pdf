@@ -1,0 +1,108 @@
+Cloud Assignment: Event-Driven Data Processing System
+1. Project Overview
+
+This project demonstrates an event-driven data processing system using AWS cloud services. Whenever a JSON file is uploaded to an Amazon S3 bucket, an AWS Lambda function is automatically triggered. The Lambda function processes the employee data and stores it in a DynamoDB table. Another Lambda function retrieves the stored data through API Gateway, which is displayed dynamically on an EC2-hosted website.
+
+2. AWS Services Used
+Service	Purpose
+Amazon EC2	Hosts the web application
+Amazon S3	Stores uploaded employee JSON files
+AWS Lambda	Processes uploaded data and retrieves employee records
+Amazon DynamoDB	Stores processed employee information
+Amazon API Gateway	Provides REST API to the website
+IAM	Manages permissions for AWS resources
+3. Project Architecture
+                User
+                  │
+                  ▼
+         Upload employees.json
+                  │
+                  ▼
+             Amazon S3 Bucket
+                  │
+        (ObjectCreated Event)
+                  │
+                  ▼
+        ProcessEmployeeData Lambda
+                  │
+                  ▼
+          Amazon DynamoDB
+                  ▲
+                  │
+      get_employees Lambda
+                  ▲
+                  │
+            API Gateway
+                  ▲
+                  │
+          EC2 Hosted Website
+4. Workflow
+Step 1
+
+The user uploads an employees.json file to the Amazon S3 bucket.
+
+Step 2
+
+The S3 upload event automatically triggers the ProcessEmployeeData Lambda function.
+
+Step 3
+
+The Lambda function reads the JSON file, processes the employee information, and stores it in the DynamoDB Employees table.
+
+Step 4
+
+The website running on Amazon EC2 sends a request to API Gateway.
+
+Step 5
+
+API Gateway invokes the get_employees Lambda function.
+
+Step 6
+
+The Lambda function retrieves employee records from DynamoDB and returns them as JSON.
+
+Step 7
+
+The website displays the employee data dynamically in a table.
+
+5. Project Structure
+cloud-event-system/
+├── architecture/
+│   └── architecture-diagram.png
+├── docs/
+│   ├── Documentation.pdf
+│   └── screenshots/
+├── lambda/
+│   ├── lambda_function.py
+│   ├── get_employees.py
+│   └── requirements.txt
+├── sample-data/
+│   └── employees.json
+├── website/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── README.md
+└── deployment-guide.md
+6. Testing
+
+The following tests were successfully completed:
+
+Uploaded employees.json to Amazon S3.
+Verified S3 triggered the Lambda function.
+Confirmed employee records were inserted into DynamoDB.
+Accessed the API Gateway endpoint and received JSON data.
+Verified the EC2-hosted website displayed employee records successfully.
+7. Screenshots
+
+Include the following screenshots:
+
+S3 Bucket
+Lambda Functions
+DynamoDB Table
+API Gateway Response
+EC2 Website Output
+Architecture Diagram
+8. Conclusion
+
+This project successfully implements an event-driven cloud architecture using AWS services. The system automatically processes uploaded employee data and displays the processed information through a web application hosted on Amazon EC2. The solution demonstrates the integration of S3, Lambda, DynamoDB, API Gateway, and EC2 to build a scalable and serverless data processing workflow.
